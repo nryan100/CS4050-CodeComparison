@@ -15,7 +15,6 @@ clock_t clock_start, clock_end; // Global variables for calculating runtime
 
 int** readAdjMatrix(std::string filename);
 void printAdjMatrix(int **mtx);
-float getDuration(std::string input);
 int** floyd(int** W);
 int* dijkstra(int** W, int sv);
 
@@ -30,13 +29,10 @@ int main() {
     
     float floyds_duration = (float)(clock() - clock_start) / CLOCKS_PER_SEC;
 
-    // getDuration("Done! Floyds algorithm took ");  
-
 #ifdef PRINT_MATRICES
     printAdjMatrix(res_floyds);
 #endif
     
-    // Run Dijkstras algorithm with a single starting vertex
     int start_vert = 2;
     int* cost = dijkstra(W, start_vert);
     std::cout << "Dijkstras for starting vert " << start_vert << " = [ ";
@@ -54,7 +50,6 @@ int main() {
     
     float dijkstras_duration = (float)(clock() - clock_start) / CLOCKS_PER_SEC;
 
-    // getDuration("Done! Dijkstras algorithm for all starting points took ");
 #ifdef PRINT_MATRICES
     printAdjMatrix(res_dijkstra);
 #endif
@@ -133,17 +128,6 @@ void printAdjMatrix(int **mtx) {
     std::cout << "\n";
 }
 
-/**
- * Calculates the duration between clock_start & clock_end
- * @param input: Tells the user what algorithm the duration belongs to
- */
-float getDuration(std::string input) {
-    float duration = (float)(clock_end - clock_start) / CLOCKS_PER_SEC;
-    std::cout << std::fixed;
-    std::cout.precision(5);
-    std::cout << input << duration << " seconds.\n" ;
-    return duration;
-}
 
 /**
  * Performs floyds algorithm.
