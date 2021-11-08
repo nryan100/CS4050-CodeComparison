@@ -67,6 +67,9 @@ int main() {
     std::string res = (equal) ? "equal" : "different";
     std::cout << "Floyds and Dijkstras algorithms give " << res << " results!\n";
 
+    // Used in benchmarking tests (normally this would be the only output)
+    // std::cout << floyds_duration << "," << dijkstras_duration << std::endl;
+
     return 0;
 }
 
